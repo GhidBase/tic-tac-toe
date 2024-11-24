@@ -43,8 +43,3 @@ function playRound() {
     incrementScore();
 }
 
-playRound();
-playRound();
-playRound();
-playRound();
-playRound();
