@@ -5,6 +5,13 @@ let ties = 0;
 let result = "";
 let playerChoice = "";
 let computerChoice = "";
+let message = "";
+
+const winsDisplay = document.querySelector("#wins")
+const lossesDisplay = document.querySelector("#losses");
+const tiesDisplay = document.querySelector("#ties");
+const messageDisplay = document.querySelector("#message");
+finalMessageDisplay = document.querySelector("#final-message");
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
@@ -12,7 +19,6 @@ buttons.forEach((button) => {
 });
 
 function buttonClicked(button) {
-    console.log(button.id);
     playRound(button.id);
 };
 
@@ -45,11 +51,36 @@ function incrementScore() {
     if (result == "tie") ++ties;
 }
 
+function displayScores() {
+    winsDisplay.textContent = "Wins: " + playerScore;
+    lossesDisplay.textContent = "Losses " + computerScore;
+    tiesDisplay.textContent = "Ties :" + ties;
+    message = "Computer played " + computerChoice + " versus your " + playerChoice + ". Match: " + result;
+    messageDisplay.textContent = message;
+    
+    if (playerScore == 5) {
+        finalMessageDisplay.textContent = "You won 5 times. You win!"
+        message = "5 wins/losses reached. Refresh page to restart."
+        messageDisplay.textContent = message;
+    }
+
+    if (computerScore == 5) {
+        finalMessageDisplay.textContent = "The computer won 5 times. You lose."
+        message = "5 wins/losses reached. Refresh page to restart."
+        messageDisplay.textContent = message;
+    }
+}
+
+
+
 function playRound(humanChoice) {
+    if (playerScore == 5 || computerScore == 5) {
+        return;
+    }
     playerChoice = humanChoice;
     computerChoice = getComputerChoice();
     result = findResult();
-    console.log(result);
     incrementScore();
+    displayScores();
 }
 
