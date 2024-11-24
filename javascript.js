@@ -6,6 +6,15 @@ let result = "";
 let playerChoice = "";
 let computerChoice = "";
 
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click",() => buttonClicked(button))
+});
+
+function buttonClicked(button) {
+    console.log(button.id);
+    playRound(button.id);
+};
 
 function getComputerChoice() {
     let randomNumber = Math.random();
@@ -36,10 +45,11 @@ function incrementScore() {
     if (result == "tie") ++ties;
 }
 
-function playRound() {
-    playerChoice = getHumanChoice();
+function playRound(humanChoice) {
+    playerChoice = humanChoice;
     computerChoice = getComputerChoice();
     result = findResult();
+    console.log(result);
     incrementScore();
 }
 
