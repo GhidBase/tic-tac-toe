@@ -1,3 +1,28 @@
 :root {
-    background-color: black;
+    --header-footer-background-color: #1e40af;
+    --main-content-background-color: white;
+}
+
+body {
+    background-color: var(--main-content-background-color);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr 8fr 1fr;
+    grid-template-columns: 1fr;
+}
+
+.header {
+    grid-row: 1;
+    background-color: var(--header-footer-background-color);
+    box-shadow: 0px 0px 16px 0 black;
+    z-index: 1;
+}
+
+.footer {
+    grid-row: 3;
+    background-color: var(--header-footer-background-color);
+    box-shadow: 0px 0px 16px 0 black;
+    z-index: 1;
 }
