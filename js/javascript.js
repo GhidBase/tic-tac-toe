@@ -1,12 +1,9 @@
 let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
-    const gameBoard = [[null, null, null], [null, null, null], [null, null, null]];
+    let gameBoard = [[null, null, null], [null, null, null], [null, null, null]];
     let currentTurn = Math.random() < .5 ? player1 : player2;
     let currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
     let winner;
     let gameState = "ongoing";
-
-    console.log(`${currentTurn} makes the first move:`);
-    logGameBoard();
 
     function makeMove(row, column) {
         if (gameState != "ongoing") {
@@ -87,13 +84,22 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
         
     }
 
+    function reset() {
+        console.clear();
+        gameBoard = [[null, null, null], [null, null, null], [null, null, null]];
+        currentTurn = Math.random() < .5 ? player1 : player2;
+        currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
+        winner;
+        gameState = "ongoing";
+
+        console.log(`${currentTurn} makes the first move:`);
+        logGameBoard();
+    }
+
     return {
         makeMove,
+        reset,
     }
 });
 
 let game = TicTacToe("Dylan", "X", "Sarah", "O");
-
-
-// if gamestate !ongoing don't allow new moves
-// add reset function
