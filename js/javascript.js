@@ -75,9 +75,14 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     inputPanel.remove();
 
     function makeMove(row, column) {
-        if (gameState != "ongoing") {
+        if (gameState != "ongoing" && gameState != "Draw!") {
             console.log(`Game is over, ${winner} wins!`)
             gameMessage.textContent = `${winner} wins!`;
+            return;
+        }
+        else if (gameState == "Draw!") {
+            console.log(`Draw!`)
+            gameMessage.textContent = gameState;
             return;
         }
         if (gameBoard[row][column]) {
@@ -92,11 +97,16 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
             gameBoardArray[column][row].textContent = currentSymbol;
             gameBoard[row][column] = currentSymbol;
             logGameBoard();
-            if (checkGameBoard()) {
+            let gameBoardStatus = checkGameBoard();
+            if (gameBoardStatus && gameBoardStatus != "Draw") {
                 winner = checkGameBoard() == player1Symbol ? player1 : player2;
                 console.log(`${winner} wins!`)
                 gameState = `${winner} wins`;
                 gameMessage.textContent = `${winner} wins!`;
+            }
+            else if (gameBoardStatus == "Draw") {
+                gameState = `Draw!`;
+                gameMessage.textContent = gameState;
             }
             else {
                 switchTurns();
@@ -158,6 +168,14 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
             gameBoard[0][2] != null && gameBoard[1][1] != null && gameBoard[2][0] != null
         ) {
             return gameBoard[0][2];
+        }
+
+        if (
+            !gameBoard[0].includes(null) &&
+            !gameBoard[1].includes(null) &&
+            !gameBoard[2].includes(null)
+        ) {
+            return "Draw";
         }
         
     }
