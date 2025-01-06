@@ -98,6 +98,10 @@ button:hover:empty {
     background-color: var(--cell-hover-background);
 }
 
+button:active.cell {
+    background-color: var(--secondary-color);
+}
+
 .top {
     border-top: none;
 }
