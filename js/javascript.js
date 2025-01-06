@@ -107,4 +107,10 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     }
 });
 
-let game = TicTacToe("Dylan", "X", "Sarah", "O");
+let game;
+
+function startGame(player1, player2) {
+    game = TicTacToe(player1, "X", player2, "O");
+}
+
+startGame("Dylan", "Sarah");
