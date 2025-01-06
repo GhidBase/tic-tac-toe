@@ -52,9 +52,27 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
             if (
                 gameBoard[0][j] == gameBoard[1][j] &&
                 gameBoard[1][j] == gameBoard[2][j] &&
-                gameBoard[0][j] != null && gameBoard[1][j] != null && gameBoard[2][j] != null) {
+                gameBoard[0][j] != null && gameBoard[1][j] != null && gameBoard[2][j] != null
+            ) {
                 return gameBoard[0][j];
             }
+        }
+
+        // Check Diagonal
+        if (
+            gameBoard[0][0] == gameBoard[1][1] &&
+            gameBoard[1][1] == gameBoard[2][2] &&
+            gameBoard[0][0] != null && gameBoard[1][1] != null && gameBoard[2][2] != null
+        ) {
+            return gameBoard[0][0];
+        }
+
+        if (
+            gameBoard[0][2] == gameBoard[1][1] &&
+            gameBoard[1][1] == gameBoard[2][0] &&
+            gameBoard[0][2] != null && gameBoard[1][1] != null && gameBoard[2][0] != null
+        ) {
+            return gameBoard[0][2];
         }
         
     }
