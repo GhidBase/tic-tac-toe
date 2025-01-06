@@ -2,7 +2,7 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     let gameBoard = [[null, null, null], [null, null, null], [null, null, null]];
     let currentTurn = Math.random() < .5 ? player1 : player2;
     let currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
-    let winner;
+    let winner = null;
     let gameState = "ongoing";
 
     function makeMove(row, column) {
@@ -87,9 +87,14 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     function reset() {
         console.clear();
         gameBoard = [[null, null, null], [null, null, null], [null, null, null]];
-        currentTurn = Math.random() < .5 ? player1 : player2;
-        currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
-        winner;
+        if (winner != null) {
+            console.log(`${winner} won last game and gets to go first!`)
+        }
+        else {
+            currentTurn = Math.random() < .5 ? player1 : player2;
+            currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
+        }
+        winner = null;
         gameState = "ongoing";
 
         console.log(`${currentTurn} makes the first move:`);
