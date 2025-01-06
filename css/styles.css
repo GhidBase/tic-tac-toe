@@ -34,6 +34,15 @@
     --input-screen-background-color: #212d558c;
 }
 
+:root,
+body,
+html,
+.input-screen {
+    height: 100dvh;
+    width: 100dvw;
+}
+
+
 body {
     background-color: var(--main-content-background-color);
     width: 100dvw;
@@ -189,8 +198,6 @@ button:active.cell:empty {
 
 .input-screen {
     position: absolute;
-    height: 100%;
-    width: 100%;
     background-color: var(--input-screen-background-color);
     z-index: 2;
     display: flex;

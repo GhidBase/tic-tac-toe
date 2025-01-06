@@ -37,6 +37,14 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     let winner = null;
     let gameState = "ongoing";
 
+    if (!player1 || player1.trim() === "") {
+        player1 = player1Symbol;
+    }
+
+    if (!player2 || player2.trim() === "") {
+        player2 = player2Symbol;
+    }
+
     // add event listeners
     for (let i = 0; i < 9; i++) {
         let row = Math.trunc(i/3);
