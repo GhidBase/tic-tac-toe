@@ -36,7 +36,8 @@
 
 :root,
 body,
-html {
+html,
+.input-screen {
     height: 100dvh;
     width: 100dvw;
 }
@@ -57,7 +58,6 @@ body {
 }
 
 .header {
-    position: relative;
     grid-row: 1;
     width: 80%;
     justify-self: center;

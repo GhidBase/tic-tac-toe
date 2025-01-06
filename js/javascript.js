@@ -32,8 +32,8 @@ storeGameBoard();
 
 let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     let gameBoard = [[null, null, null], [null, null, null], [null, null, null]];
-    let currentTurn = Math.random() < .5 ? player1 : player2;
-    let currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
+    let currentTurn;
+    let currentSymbol;
     let winner = null;
     let gameState = "ongoing";
 
@@ -44,6 +44,9 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     if (!player2 || player2.trim() === "") {
         player2 = player2Symbol;
     }
+
+    currentTurn = Math.random() < .5 ? player1 : player2;
+    currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
 
     // add event listeners
     for (let i = 0; i < 9; i++) {
@@ -62,7 +65,12 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
 
     console.log("starting game");
     console.log(`${currentTurn}'s turn:`)
-    gameMessage.textContent = `${currentTurn}'s (${currentSymbol}) turn:`
+    if (currentTurn == "X" || currentTurn == "O") {
+        gameMessage.textContent = `${currentTurn}'s turn:`
+    }
+    else {
+        gameMessage.textContent = `${currentTurn}'s (${currentSymbol}) turn:`
+    }
 
     inputPanel.remove();
 
@@ -99,8 +107,13 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     function switchTurns() {
         currentTurn = currentTurn == player1 ? player2 : player1;
         currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
-        console.log(`${currentTurn}'s turn:`)
-        gameMessage.textContent = `${currentTurn}'s (${currentSymbol}) turn:`;
+        console.log(`${currentTurn}'s turn:`);
+        if (currentTurn == "X" || currentTurn == "O") {
+            gameMessage.textContent = `${currentTurn}'s turn:`
+        }
+        else {
+            gameMessage.textContent = `${currentTurn}'s (${currentSymbol}) turn:`
+        }
     }
 
     function logGameBoard() {
@@ -172,7 +185,12 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
         gameState = "ongoing";
 
         console.log(`${currentTurn} makes the first move:`);
-        gameMessage.textContent = `${currentTurn}'s (${currentSymbol}) turn:`;
+        if (currentTurn == "X" || currentTurn == "O") {
+            gameMessage.textContent = `${currentTurn}'s turn:`
+        }
+        else {
+            gameMessage.textContent = `${currentTurn}'s (${currentSymbol}) turn:`
+        }
         logGameBoard();
     }
 
