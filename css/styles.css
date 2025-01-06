@@ -31,6 +31,7 @@
     --cell-color: var(--accent-color);
     --cell-text-shadow-color: var(--accent-color);
     --cell-hover-background: #ede8f554;
+    --input-screen-background-color: #212d558c;
 }
 
 body {
@@ -132,4 +133,49 @@ button:active.cell:empty {
 
 .bottom.right {
     border-bottom-right-radius: 12px;
+}
+
+
+.input-screen {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--input-screen-background-color);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-panel {
+    /* width: 40dvw; */
+    padding: 5dvh 2dvw;
+    background-color: var(--header-footer-background-color);
+    box-shadow: 0 0 8px 0 var(--game-board-shadow-color);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'roboto';
+    color: var(--cell-color);
+}
+
+.input-panel input {
+    font-size: 1em;
+    width: 40dvw;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+.input-panel button {
+    margin-top: 20px;
+    font-size: 1em;
+    background-color: var(--game-board-background-color);
+    box-shadow: 0 0 8px 0 var(--game-board-shadow-color);
+    color: var(--cell-color);
+    border-radius: 12px;
+    padding: 8px 16px;
 }
