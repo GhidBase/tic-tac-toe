@@ -7,6 +7,8 @@ let inputPanel = document.querySelector(".input-screen");
 let gameBoardDom = document.querySelector(".game-board");
 let gameBoardArray = [[null, null, null], [null, null, null], [null, null, null]];
 
+let gameMessage = document.querySelector(".game-message");
+
 let game;
 
 function storeGameBoard() {
@@ -45,12 +47,14 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
 
     console.log("starting game");
     console.log(`${currentTurn}'s turn:`)
+    gameMessage.textContent = `${currentTurn}'s (${currentSymbol}) turn:`
 
     inputPanel.remove();
 
     function makeMove(row, column) {
         if (gameState != "ongoing") {
             console.log(`Game is over, ${winner} wins!`)
+            gameMessage.textContent = `${winner} wins!`;
             return;
         }
         if (gameBoard[row][column]) {
@@ -69,6 +73,7 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
                 winner = checkGameBoard() == player1Symbol ? player1 : player2;
                 console.log(`${winner} wins!`)
                 gameState = `${winner} wins`;
+                gameMessage.textContent = `${winner} wins!`;
             }
             else {
                 switchTurns();
