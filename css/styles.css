@@ -21,7 +21,7 @@
     --header-footer-background-color: var(--main-color);
     /* --header-footer-shadow-color: var(--neutral-accent); */
     --header-footer-outline: var(--neutral-accent);
-    --header-footer-text-color: var(--main-color);
+    --header-footer-text-color: var(--accent-color);
     --header-footer-text-shadow: var(--accent-color);
     --main-content-background-color: var(--main-color);
     --game-board-background-color: var(--main-color);
