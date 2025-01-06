@@ -16,6 +16,8 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     let gameState = "ongoing";
 
     console.log("starting game");
+    console.log(`${currentTurn}'s turn:`)
+
     inputPanel.remove();
 
     function makeMove(row, column) {
