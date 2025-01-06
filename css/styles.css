@@ -36,8 +36,7 @@
 
 :root,
 body,
-html,
-.input-screen {
+html {
     height: 100dvh;
     width: 100dvw;
 }
@@ -203,6 +202,10 @@ button:active.cell:empty {
     display: flex;
     align-items: center;
     justify-content: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
 .input-panel {
