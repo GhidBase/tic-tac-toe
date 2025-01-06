@@ -27,7 +27,9 @@
     --game-board-background-color: var(--main-color);
     /* --game-board-border-color: var(--neutral-accent); */
     --game-board-shadow-color: var(--neutral-accent);
-    --cell-border-color: var(--neutral-accent)
+    --cell-border-color: var(--neutral-accent);
+    --cell-color: var(--accent-color);
+    --cell-text-shadow-color: var(--accent-color);
 }
 
 body {
@@ -84,7 +86,11 @@ body {
 }
 
 .cell {
+    background-color: transparent;
     border: .5px solid var(--cell-border-color);
+    color: var(--cell-color);
+    font-size: 80px;
+    text-shadow: 0 0 4px var(--cell-text-shadow-color);
 }
 
 .top {
