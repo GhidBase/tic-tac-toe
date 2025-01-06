@@ -30,6 +30,7 @@
     --cell-border-color: var(--neutral-accent);
     --cell-color: var(--accent-color);
     --cell-text-shadow-color: var(--accent-color);
+    --cell-hover-background: #ede8f554;
 }
 
 body {
@@ -93,6 +94,10 @@ body {
     text-shadow: 0 0 4px var(--cell-text-shadow-color);
 }
 
+button:hover:empty {
+    background-color: var(--cell-hover-background);
+}
+
 .top {
     border-top: none;
 }
@@ -107,4 +112,20 @@ body {
 
 .bottom {
     border-bottom: none;
+}
+
+.top.left {
+    border-top-left-radius: 12px;
+}
+
+.top.right {
+    border-top-right-radius: 12px;
+}
+
+.bottom.left {
+    border-bottom-left-radius: 12px;
+}
+
+.bottom.right {
+    border-bottom-right-radius: 12px;
 }
