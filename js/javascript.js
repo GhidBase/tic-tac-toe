@@ -1,9 +1,22 @@
+
+const startButton = document.querySelector("#start-button");
+let player1Name = document.querySelector("#player-1");
+let player2Name = document.querySelector("#player-2");
+let inputPanel = document.querySelector(".input-screen")
+
+
+
+
+
 let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     let gameBoard = [[null, null, null], [null, null, null], [null, null, null]];
     let currentTurn = Math.random() < .5 ? player1 : player2;
     let currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
     let winner = null;
     let gameState = "ongoing";
+
+    console.log("starting game");
+    inputPanel.remove();
 
     function makeMove(row, column) {
         if (gameState != "ongoing") {
@@ -113,4 +126,8 @@ function startGame(player1, player2) {
     game = TicTacToe(player1, "X", player2, "O");
 }
 
-startGame("Dylan", "Sarah");
+// startGame("Dylan", "Sarah");
+
+startButton.addEventListener("click", () => {
+    startGame(player1Name.value, player2Name.value)
+});
