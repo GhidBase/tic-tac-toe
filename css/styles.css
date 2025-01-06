@@ -94,7 +94,7 @@ body {
     text-shadow: 0 0 4px var(--cell-text-shadow-color);
 }
 
-button:hover:empty {
+button:hover {
     background-color: var(--cell-hover-background);
 }
 
