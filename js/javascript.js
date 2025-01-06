@@ -4,20 +4,26 @@ let player1Name = document.querySelector("#player-1");
 let player2Name = document.querySelector("#player-2");
 let inputPanel = document.querySelector(".input-screen");
 
-let gameBoard = document.querySelector(".game-board");
+let gameBoardDom = document.querySelector(".game-board");
 let gameBoardArray = [[null, null, null], [null, null, null], [null, null, null]];
 
-let i = 0;
-let j = 0;
-Array.from(gameBoard.children).forEach(child => {
-    gameBoardArray[i][j] = child;
-    i++;
-    if (i > 2) {
-        i = 0;
-        j++;
-    }
-});
-console.log(gameBoardArray)
+let game;
+
+function storeGameBoard() {
+    let i = 0;
+    let j = 0;
+    Array.from(gameBoardDom.children).forEach(child => {
+        gameBoardArray[i][j] = child;
+        i++;
+        if (i > 2) {
+            i = 0;
+            j++;
+        }
+    });
+    console.log(gameBoardArray)
+}
+
+storeGameBoard();
 
 
 let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
@@ -26,6 +32,16 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     let currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
     let winner = null;
     let gameState = "ongoing";
+
+    // add event listeners
+    for (let i = 0; i < 9; i++) {
+        let row = Math.trunc(i/3);
+        let column = i % 3;
+        // console.log(gameBoardArray)
+        gameBoardArray[column][row].addEventListener("click", () => {
+            game.makeMove(row, column);
+        })
+    }
 
     console.log("starting game");
     console.log(`${currentTurn}'s turn:`)
@@ -46,6 +62,7 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
         else {
             console.clear();
             console.log(`${currentTurn} is placing ${currentSymbol} at row ${row}, column ${column}`);
+            gameBoardArray[column][row].textContent = currentSymbol;
             gameBoard[row][column] = currentSymbol;
             logGameBoard();
             if (checkGameBoard()) {
@@ -134,7 +151,6 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     }
 });
 
-let game;
 
 function startGame(player1, player2) {
     game = TicTacToe(player1, "X", player2, "O");
