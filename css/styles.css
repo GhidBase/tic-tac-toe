@@ -189,8 +189,8 @@ button:active.cell:empty {
 
 .input-screen {
     position: absolute;
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     background-color: var(--input-screen-background-color);
     z-index: 2;
     display: flex;
