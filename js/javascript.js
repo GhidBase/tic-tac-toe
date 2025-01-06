@@ -2,10 +2,22 @@
 const startButton = document.querySelector("#start-button");
 let player1Name = document.querySelector("#player-1");
 let player2Name = document.querySelector("#player-2");
-let inputPanel = document.querySelector(".input-screen")
+let inputPanel = document.querySelector(".input-screen");
 
+let gameBoard = document.querySelector(".game-board");
+let gameBoardArray = [[null, null, null], [null, null, null], [null, null, null]];
 
-
+let i = 0;
+let j = 0;
+Array.from(gameBoard.children).forEach(child => {
+    gameBoardArray[i][j] = child;
+    i++;
+    if (i > 2) {
+        i = 0;
+        j++;
+    }
+});
+console.log(gameBoardArray)
 
 
 let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
