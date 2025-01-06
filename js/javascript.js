@@ -2,13 +2,21 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     const gameBoard = [[null, null, null], [null, null, null], [null, null, null]];
     let currentTurn = Math.random() < .5 ? player1 : player2;
     let currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
+    let winner;
+    let gameState = "ongoing";
+
     console.log(`${currentTurn} makes the first move:`);
     logGameBoard();
 
     function makeMove(row, column) {
+        if (gameState != "ongoing") {
+            console.log(`Game is over, ${winner} wins!`)
+            return;
+        }
         if (gameBoard[row][column]) {
             console.clear();
             console.log(`Row ${row}, column ${column} is occupied`);
+            console.log(`${currentTurn}'s turn:`);
             logGameBoard();
         }
         else {
@@ -17,7 +25,9 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
             gameBoard[row][column] = currentSymbol;
             logGameBoard();
             if (checkGameBoard()) {
-                console.log(`${checkGameBoard()} wins`)
+                winner = checkGameBoard() == player1Symbol ? player1 : player2;
+                console.log(`${winner} wins!`)
+                gameState = `${winner} wins`;
             }
             else {
                 switchTurns();
@@ -84,6 +94,6 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
 
 let game = TicTacToe("Dylan", "X", "Sarah", "O");
 
-// log gamestate as ongoing or who won
+
 // if gamestate !ongoing don't allow new moves
 // add reset function
