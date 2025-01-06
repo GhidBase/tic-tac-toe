@@ -148,24 +148,27 @@ button:active.cell:empty {
 }
 
 .input-panel {
-    /* width: 40dvw; */
+    width: clamp(40dvw, 80dvw, 1000px);
+    font-size: calc(5px + (2*1dvw));
+    box-sizing: border-box;
     padding: 5dvh 2dvw;
+
+    
     background-color: var(--header-footer-background-color);
     box-shadow: 0 0 8px 0 var(--game-board-shadow-color);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    font-size: calc(5px + (2*1dvw));
     align-items: center;
     justify-content: center;
     font-family: 'roboto';
     color: var(--cell-color);
+    /* aspect-ratio: 1.5/1; */
 }
 
 .input-panel input {
     font-size: 1em;
-    width: 40dvw;
+    width: 80%;
     margin-top: 8px;
     margin-bottom: 20px;
 }
