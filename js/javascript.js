@@ -2,12 +2,14 @@
 const startButton = document.querySelector("#start-button");
 let player1Name = document.querySelector("#player-1");
 let player2Name = document.querySelector("#player-2");
-let inputPanel = document.querySelector(".input-screen");
+const inputPanel = document.querySelector(".input-screen");
 
-let gameBoardDom = document.querySelector(".game-board");
+const gameBoardDom = document.querySelector(".game-board");
 let gameBoardArray = [[null, null, null], [null, null, null], [null, null, null]];
 
 let gameMessage = document.querySelector(".game-message");
+
+const resetButton = document.querySelector(".reset-button");
 
 let game;
 
@@ -44,6 +46,11 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
             game.makeMove(row, column);
         })
     }
+
+    
+    resetButton.addEventListener("click", () => {
+        reset();
+    })
 
     console.log("starting game");
     console.log(`${currentTurn}'s turn:`)
@@ -85,6 +92,7 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
         currentTurn = currentTurn == player1 ? player2 : player1;
         currentSymbol = currentTurn == player1 ? player1Symbol : player2Symbol;
         console.log(`${currentTurn}'s turn:`)
+        gameMessage.textContent = `${currentTurn}'s (${currentSymbol}) turn:`;
     }
 
     function logGameBoard() {
@@ -134,6 +142,15 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
     }
 
     function reset() {
+
+        
+        for (let i = 0; i < 9; i++) {
+            let row = Math.trunc(i/3);
+            let column = i % 3;
+            gameBoardArray[column][row].textContent = null;
+        }
+
+
         console.clear();
         gameBoard = [[null, null, null], [null, null, null], [null, null, null]];
         if (winner != null) {
@@ -147,6 +164,7 @@ let TicTacToe = (function(player1, player1Symbol, player2, player2Symbol) {
         gameState = "ongoing";
 
         console.log(`${currentTurn} makes the first move:`);
+        gameMessage.textContent = `${currentTurn}'s (${currentSymbol}) turn:`;
         logGameBoard();
     }
 
@@ -164,5 +182,5 @@ function startGame(player1, player2) {
 // startGame("Dylan", "Sarah");
 
 startButton.addEventListener("click", () => {
-    startGame(player1Name.value, player2Name.value + " ")
+    startGame(player1Name.value, player2Name.value == player1Name.value ? player2Name.value + " " : player2Name.value)
 });

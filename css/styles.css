@@ -238,4 +238,8 @@ button:active.cell:empty {
     width: 100px;
     align-self: center;
     margin-top: 5dvh;
+    background-color: var(--game-board-background-color);
+    border: 1px solid var(--cell-border-color);
+    color: var(--cell-color);
+    font-size: 1em;
 }
