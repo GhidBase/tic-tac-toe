@@ -74,6 +74,29 @@ body {
     box-shadow: 0px 0px 8px 0 var(--header-footer-shadow-color);
     z-index: 1;
     border-top: 1px solid var(--header-footer-outline);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer button {
+    background-color: transparent;
+    border: 1px solid var(--cell-border-color);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+.footer img {
+    width: 50px;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
 }
 
 .game-container {

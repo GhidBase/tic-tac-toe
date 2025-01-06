@@ -164,5 +164,5 @@ function startGame(player1, player2) {
 // startGame("Dylan", "Sarah");
 
 startButton.addEventListener("click", () => {
-    startGame(player1Name.value, player2Name.value)
+    startGame(player1Name.value, player2Name.value + " ")
 });
