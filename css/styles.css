@@ -98,7 +98,7 @@ button:hover:empty {
     background-color: var(--cell-hover-background);
 }
 
-button:active.cell {
+button:active.cell:empty {
     background-color: var(--secondary-color);
 }
 
